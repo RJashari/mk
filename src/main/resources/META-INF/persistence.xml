@@ -5,8 +5,8 @@
     <class>Main.BL.Dega</class>
     <class>Main.BL.Users</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=Menaxhimi_celesave"/>
-      <property name="javax.persistence.jdbc.user" value="Rinor"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://192.178.10.57:1433;databaseName=MENAXHIMI_CELESAVE"/>
+      <property name="javax.persistence.jdbc.user" value="VleresimiKampanjave"/>
       <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
       <property name="javax.persistence.jdbc.password" value="Password00"/>
     </properties>

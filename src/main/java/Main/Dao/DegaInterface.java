@@ -1,12 +1,9 @@
 package Main.Dao;
 
-
-
-
-
 import Main.BL.Dega;
-import Main.Dao.KampanjaException;
+
 import java.util.List;
+import java.util.Set;
 
 public interface DegaInterface {
     
@@ -15,4 +12,5 @@ public interface DegaInterface {
     void remove(Dega dega) throws KampanjaException;
     List<Dega> findAll() ;
     Dega findById(long id);
+    Set<Dega> getAllDegetForUser(String username);
 }

@@ -19,10 +19,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Rinor Jashari
+ * @author rinor.jashari
  */
 @Entity
-@Table(name = "Dega", catalog = "Menaxhimi_celesave", schema = "dbo")
+@Table(name = "Dega", catalog = "MENAXHIMI_CELESAVE", schema = "dbo")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Dega.findAll", query = "SELECT d FROM Dega d")
@@ -50,50 +50,50 @@ public class Dega implements Serializable {
     @NotNull
     @Column(name = "degaID", nullable = false)
     private Integer degaID;
-    @Size(max = 50)
-    @Column(name = "emri", length = 50)
+    @Size(max = 70)
+    @Column(name = "Emri", length = 70)
     private String emri;
-    @Size(max = 50)
-    @Column(name = "pergjegjesi", length = 50)
+    @Size(max = 70)
+    @Column(name = "Pergjegjesi", length = 70)
     private String pergjegjesi;
     @Size(max = 250)
-    @Column(name = "celesi_hyrjes", length = 250)
+    @Column(name = "celesiHyrjes", length = 250)
     private String celesiHyrjes;
     @Size(max = 250)
-    @Column(name = "celesi_server_room", length = 250)
+    @Column(name = "celesiServerRoom", length = 250)
     private String celesiServerRoom;
     @Size(max = 250)
-    @Column(name = "celesi__deres_atm", length = 250)
+    @Column(name = "celesiDeresAtm", length = 250)
     private String celesiDeresAtm;
     @Size(max = 250)
-    @Column(name = "kodi_alarmit_dege", length = 250)
+    @Column(name = "kodiAlarmitDege", length = 250)
     private String kodiAlarmitDege;
     @Size(max = 250)
-    @Column(name = "celesi_trezor", length = 250)
+    @Column(name = "celesiTrezor", length = 250)
     private String celesiTrezor;
     @Size(max = 250)
-    @Column(name = "celesi_kasaforte_1", length = 250)
+    @Column(name = "celesiKasaforte1", length = 250)
     private String celesiKasaforte1;
     @Size(max = 250)
-    @Column(name = "celesi_kasaforte_2", length = 250)
+    @Column(name = "celesiKasaforte2", length = 250)
     private String celesiKasaforte2;
     @Size(max = 250)
-    @Column(name = "kodi_alarmit_trezor", length = 250)
+    @Column(name = "kodiAlarmitTrezor", length = 250)
     private String kodiAlarmitTrezor;
     @Size(max = 250)
-    @Column(name = "kodi_shifer_kasaforte", length = 250)
+    @Column(name = "kodiShiferKasaforte", length = 250)
     private String kodiShiferKasaforte;
     @Size(max = 250)
-    @Column(name = "kodet_digjitale_kasaforte_1", length = 250)
+    @Column(name = "kodetDigjitaleKasaforte1", length = 250)
     private String kodetDigjitaleKasaforte1;
     @Size(max = 250)
-    @Column(name = "kodet_digjitale_kasaforte_2", length = 250)
+    @Column(name = "kodetDigjitaleKasaforte2", length = 250)
     private String kodetDigjitaleKasaforte2;
     @Size(max = 50)
-    @Column(name = "data_krijimit", length = 50)
+    @Column(name = "dataKrijimit", length = 50)
     private String dataKrijimit;
     @Size(max = 50)
-    @Column(name = "data_modifikimit", length = 50)
+    @Column(name = "dataModifikimit", length = 50)
     private String dataModifikimit;
 
     public Dega() {

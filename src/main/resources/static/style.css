@@ -1,0 +1,174 @@
+.footer{
+	
+	color:white;
+}
+#myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 20px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #F47025; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+}
+.statistikatPytja1{
+    width:100%;
+    height:30%;
+    background-color: yellow;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding-left: 0;
+    padding-top: 14px;
+    overflow: hidden;
+    background-color: #F47025;
+    border:1px solid #ccc;
+    height: 50px;
+    border-radius: 4px;
+}
+
+li {
+    float: left;
+    text-decoration: none;
+
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding:5px 15px 5px 15px;
+    text-decoration: none;
+    font-size: 22px;
+    font-family: Arial;
+}
+
+li a:hover:not(.active) {
+    background-color: #F47026;
+    border-radius: 4px;
+    text-decoration: none;
+
+}
+
+
+li a .active {
+    background-color: white;
+    color:#F47025;
+    border-radius: 4px;
+}
+#myBtn:hover {
+    opacity: 0.8; /* Add a light orange background on hover */
+}
+
+#titleId{
+	background-color: #f1f1f1; 
+	text-align: left;
+	font-size: 20px;
+	margin-left:5%;
+	margin-right: 5%;
+        margin-bottom: 0px;
+	border-radius: 4px; /* Rounded corners */
+        padding: 0px;
+	
+}
+
+#contentDiv{
+	
+	width:90%;
+	margin-left:5%;
+	margin-right: 5%; 
+	background-color: #eaeaea;
+	padding-bottom:auto;
+	border-radius: 10px; /* Rounded corners */
+	
+}
+body{
+	background-color:#aeaeae;
+}
+.container {
+   
+    border-width:1px;
+    border-color:#F47025;
+    border: 1px solid #F47025;
+    border-radius: 4px;
+    box-sizing: border-box;
+    
+    background-color: white;
+    padding: 20px;
+    
+}
+.temp{
+    padding-bottom: 1200px;
+}
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+input[type=submit] {
+    background-color: #F47025;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+   opacity:0.8;
+}
+.checkbox-inline-1{
+
+	padding-right: 170px;
+	padding-bottom: 5px;
+}
+.checkbox-inline-2{
+
+	padding-right: 125px;
+	padding-bottom: 5px;
+}
+.checkbox-inline-3{
+
+	padding-right: 43px;
+	padding-bottom: 5px;
+}
+.checkbox-inline-4{
+
+	padding-right: 80px;
+	padding-bottom: 5px;
+}
+.checkbox-inline-5{
+
+	padding-right: 163px;
+	padding-bottom: 5px;
+}
+.footer {
+    position: static;
+    left: 0;
+    bottom: 0;
+    height:60px;
+    margin-bottom:20px;
+    margin-top:5px;
+    align-content: center;
+    width: 100%;
+    background-color:#F47025;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.pytjaLabel{
+	font-size: 20px;
+}

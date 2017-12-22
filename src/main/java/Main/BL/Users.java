@@ -19,56 +19,66 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Rinor Jashari
+ * @author rinor.jashari
  */
 @Entity
-@Table(name = "Users", catalog = "Menaxhimi_celesave", schema = "dbo")
+@Table(name = "Users", catalog = "MENAXHIMI_CELESAVE", schema = "dbo")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u")
-    , @NamedQuery(name = "Users.findByUsersID", query = "SELECT u FROM Users u WHERE u.usersID = :usersID")
+    , @NamedQuery(name = "Users.findByUserID", query = "SELECT u FROM Users u WHERE u.userID = :userID")
     , @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username")
     , @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password")
-    , @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email")
-    , @NamedQuery(name = "Users.findByEnabled", query = "SELECT u FROM Users u WHERE u.enabled = :enabled")
-    , @NamedQuery(name = "Users.findByRoli", query = "SELECT u FROM Users u WHERE u.roli = :roli")})
+    , @NamedQuery(name = "Users.findByRole", query = "SELECT u FROM Users u WHERE u.role = :role")
+    , @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email")})
 public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "usersID", nullable = false)
-    private Integer usersID;
-    @Size(max = 50)
-    @Column(name = "username", length = 50)
+    @Column(name = "userID", nullable = false)
+    private Integer userID;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 250)
+    @Column(name = "username", nullable = false, length = 250)
     private String username;
-    @Size(max = 50)
-    @Column(name = "password", length = 50)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 250)
+    @Column(name = "password", nullable = false, length = 250)
     private String password;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "role", nullable = false, length = 50)
+    private String role;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 50)
     @Column(name = "email", length = 50)
     private String email;
-    @Column(name = "enabled")
-    private Boolean enabled;
-    @Size(max = 50)
-    @Column(name = "roli", length = 50)
-    private String roli;
 
     public Users() {
     }
 
-    public Users(Integer usersID) {
-        this.usersID = usersID;
+    public Users(Integer userID) {
+        this.userID = userID;
     }
 
-    public Integer getUsersID() {
-        return usersID;
+    public Users(Integer userID, String username, String password, String role) {
+        this.userID = userID;
+        this.username = username;
+        this.password = password;
+        this.role = role;
     }
 
-    public void setUsersID(Integer usersID) {
-        this.usersID = usersID;
+    public Integer getUserID() {
+        return userID;
+    }
+
+    public void setUserID(Integer userID) {
+        this.userID = userID;
     }
 
     public String getUsername() {
@@ -87,6 +97,14 @@ public class Users implements Serializable {
         this.password = password;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -95,26 +113,10 @@ public class Users implements Serializable {
         this.email = email;
     }
 
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public String getRoli() {
-        return roli;
-    }
-
-    public void setRoli(String roli) {
-        this.roli = roli;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (usersID != null ? usersID.hashCode() : 0);
+        hash += (userID != null ? userID.hashCode() : 0);
         return hash;
     }
 
@@ -125,7 +127,7 @@ public class Users implements Serializable {
             return false;
         }
         Users other = (Users) object;
-        if ((this.usersID == null && other.usersID != null) || (this.usersID != null && !this.usersID.equals(other.usersID))) {
+        if ((this.userID == null && other.userID != null) || (this.userID != null && !this.userID.equals(other.userID))) {
             return false;
         }
         return true;
@@ -133,7 +135,7 @@ public class Users implements Serializable {
 
     @Override
     public String toString() {
-        return "Main.BL.Users[ usersID=" + usersID + " ]";
+        return "Main.BL.Users[ userID=" + userID + " ]";
     }
     
 }

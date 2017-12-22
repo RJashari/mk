@@ -1,9 +1,9 @@
 package Main.Dao;
 import Main.BL.Dega;
+import java.util.HashSet;
 
 import java.util.List;
-import javax.persistence.NoResultException;
-import org.apache.log4j.Logger;
+import java.util.Set;
 import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 
@@ -75,5 +75,16 @@ public class DegaRepository extends EntMngClass implements DegaInterface {
    
     }
 
-}
+ 
+      @Override
+	public Set<Dega> getAllDegetForUser(String username) {
+		return new HashSet<>(em
+				.createQuery("SELECT p from Dega p where p.pergjegjesi=?")
+				.setParameter(0, username)
+				.getResultList()
+				);
+	}
+    }
+
+
 

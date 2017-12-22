@@ -7,6 +7,7 @@
     <name>MenaxhimiCelesave</name>
     <packaging>jar</packaging>
     
+
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -89,8 +90,6 @@
 			<artifactId>javax.mail</artifactId>
 			<version>1.5.6</version>
 		</dependency>
-                <!-- https://mvnrepository.com/artifact/org.springframework/org.springframework.jdbc -->
-
 		
 		<!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
 		<dependency>
@@ -150,7 +149,7 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-ldap</artifactId>
 		</dependency> -->
-                <dependency>
+<!--                <dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
 			<version>4.0.1.RELEASE</version>
@@ -160,7 +159,7 @@
                      <groupId>org.springframework.security</groupId>
                      <artifactId>spring-security-config</artifactId>
                      <version>4.0.1.RELEASE</version>
-                 </dependency>	
+                 </dependency>	-->
 
 		<dependency>
 			<groupId>com.unboundid</groupId>
@@ -185,7 +184,13 @@
 		</dependency>
 -->		<dependency>
                     <groupId>com.microsoft.sqlserver</groupId>
-                    <artifactId>mssql-jdbc</artifactId>
+                    <artifactId>sqljdbc4</artifactId>
+                    <version>4.0</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-jdbc</artifactId>
+                    <version>3.0.3.RELEASE</version>
                 </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -214,12 +219,26 @@
 	  <version>2.5.2</version>
 	  <scope>provided</scope>
 	 </dependency>
-	 <dependency>
-	  <groupId>org.springframework.security</groupId>
-	  <artifactId>spring-security-core</artifactId>
-	  <version>4.2.3.RELEASE</version>
-	  <type>jar</type>
-	 </dependency>
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-core</artifactId>
+		</dependency>
+
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-openid</artifactId>
+	</dependency>
+
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-ldap</artifactId>
+	</dependency>
+	
+	<dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>4.5.1</version>
+    </dependency>
 	</dependencies>
 
 	<build>
