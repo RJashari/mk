@@ -16,4 +16,5 @@ import org.springframework.stereotype.Service;
 @Service
 public class EntMngClass {
     EntityManager em = Persistence.createEntityManagerFactory("MenaxhimiCelesave").createEntityManager();
+    
 }

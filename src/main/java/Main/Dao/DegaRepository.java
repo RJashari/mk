@@ -68,7 +68,7 @@ public class DegaRepository extends EntMngClass implements DegaInterface {
     }
     @Override
     public Dega findById(long degaID){
-        Query query = em.createQuery("SELECT p FROM Dega p WHERE p.nrPersonal = :degaID");
+        Query query = em.createQuery("SELECT u FROM Dega u WHERE u.degaID = :degaID");
         query.setParameter("degaID", degaID);
         
            return (Dega)query.getSingleResult();
@@ -79,8 +79,8 @@ public class DegaRepository extends EntMngClass implements DegaInterface {
       @Override
 	public Set<Dega> getAllDegetForUser(String username) {
 		return new HashSet<>(em
-				.createQuery("SELECT p from Dega p where p.pergjegjesi=?")
-				.setParameter(0, username)
+				.createQuery("SELECT d FROM Dega d WHERE d.pergjegjesi = :pergjegjesi")
+				.setParameter("pergjegjesi", username)
 				.getResultList()
 				);
 	}

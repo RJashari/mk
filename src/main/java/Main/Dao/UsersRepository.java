@@ -5,7 +5,9 @@ import Main.BL.Users;
 
 import java.util.List;
 import java.util.Set;
+import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.Persistence;
 import org.apache.log4j.Logger;
 import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
@@ -19,19 +21,24 @@ public class UsersRepository extends EntMngClass implements UsersInterface {
     public void create(Users users) throws KampanjaException {
         LOGGER.info("Duke krijuar shfrytezuesin.");
         try{
+            
             em.getTransaction().begin();
+            users.setPassword(DEFAULT_PASSWORD);
             em.persist(users);
             em.getTransaction().commit();
         }
         catch(Throwable thro){
             
             if(thro.getMessage().contains("2627")){
-            
+                    em.getTransaction().rollback();
                     throw new KampanjaException("E dhëna egziston !");
+                    
             }
         else{
+                  em.getTransaction().rollback();
                 throw new KampanjaException("Create : "+thro.getClass()+" - "+thro.getMessage());
                 }
+         
     }
 }
     @Override
@@ -43,9 +50,11 @@ public class UsersRepository extends EntMngClass implements UsersInterface {
         }
         catch(Throwable thro){
             if(thro.getMessage().contains("2627")){
-                    throw new KampanjaException("E dhëna egziston");
+                  em.getTransaction().rollback();
+                   throw new KampanjaException("E dhëna egziston");
             }
             else{
+                 em.getTransaction().rollback();
                 throw new KampanjaException("Update: "+thro.getClass()+" - "+thro.getMessage());
             }
                 
@@ -59,9 +68,11 @@ public class UsersRepository extends EntMngClass implements UsersInterface {
             em.getTransaction().commit();
         }catch(Throwable thro){
             if(thro.getMessage().contains("547")){
+                em.getTransaction().rollback();
                 throw new KampanjaException("E dhëna është përdorur, nuk mund ta fshini!!");
             }
             else{
+                 em.getTransaction().rollback();
                  throw new KampanjaException("Remove: "+thro.getClass()+" - "+thro.getMessage());
             }
         }
@@ -73,8 +84,8 @@ public class UsersRepository extends EntMngClass implements UsersInterface {
     }
     @Override
     public Users findById(int usersID){
-        Query query = em.createQuery("SELECT p FROM Users p WHERE p.nrPersonal = :usersID");
-        query.setParameter("usersID", usersID);
+        Query query = em.createQuery("SELECT u FROM Users u WHERE u.userID = :userID");
+        query.setParameter("userID", usersID);
         
            return (Users)query.getSingleResult();
     }
@@ -82,16 +93,21 @@ public class UsersRepository extends EntMngClass implements UsersInterface {
     @Override
     public void removeByUsername(String username) throws KampanjaException {
        LOGGER.info("Removing user: " + username);
+       
         try{
+           
             Users user = this.findUsersByUsername(username);
             em.getTransaction().begin();
             em.remove(user);
             em.getTransaction().commit();
         }catch(Throwable thro){
             if(thro.getMessage().contains("547")){
+                em.getTransaction().rollback();
                 throw new KampanjaException("E dhëna është përdorur, nuk mund ta fshini!!");
+                
             }
             else{
+                em.getTransaction().rollback();
                  throw new KampanjaException("Remove: "+thro.getClass()+" - "+thro.getMessage());
             }
         }
@@ -119,7 +135,7 @@ public class UsersRepository extends EntMngClass implements UsersInterface {
         }
         catch(Throwable thro){
             
-            
+            em.getTransaction().rollback();
                 throw new KampanjaException("Create : "+thro.getClass()+" - "+thro.getMessage());
                 }
     }

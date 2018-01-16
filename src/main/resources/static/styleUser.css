@@ -28,6 +28,9 @@ ul {
     border-radius: 4px;
     
 }
+#center {
+    padding: 10px 0;
+   }
 
 
 li {
@@ -83,13 +86,14 @@ li a .active {
 }
 #tdT{
     padding-top: 15px;
+    font-size: 12px;
 }
 btn{
     background-color: #F47025;
 }
 .btn-primary
-{
-    background-color: #F47025;
+{ 
+   background-color: #F47025;
 }
 
 #contentDiv{
@@ -126,25 +130,24 @@ body{
 .table{
     border: 1px solid #ccc;
     border-radius: 10px;
-    padding-top: 10px;
+    /*padding-top: 10px;*/
     
 }
 th{
     text-align: center;
+    font-size: 13px;
 }
 #buton:hover{
     opacity:0.8;
 }
 .tabelaDiv {
-   
-    
-    
+
     border-radius: 4px;
     box-sizing: border-box;
     margin-bottom: 0px;
     background-color: white;
-     padding-right: 10%;
-    padding-left: 10%;
+    padding-right:3%;
+    padding-left:3%;
     width:auto;
     
 }
@@ -165,7 +168,7 @@ input[type=text], select, textarea {
 input[type=submit] {
     background-color: #F47025;
     color: white;
-    padding: 12px 20px;
+    padding: 7px 15px;
     border: none;
     border-radius: 4px;
     cursor: pointer;

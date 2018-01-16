@@ -6,14 +6,15 @@
 package Main.BL;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -22,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author rinor.jashari
  */
 @Entity
-@Table(name = "Dega", catalog = "MENAXHIMI_CELESAVE", schema = "dbo")
+@Table(name = "Dega")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Dega.findAll", query = "SELECT d FROM Dega d")
@@ -46,9 +47,8 @@ public class Dega implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "degaID", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "degaID")
     private Integer degaID;
     @Size(max = 70)
     @Column(name = "Emri", length = 70)
@@ -95,6 +95,10 @@ public class Dega implements Serializable {
     @Size(max = 50)
     @Column(name = "dataModifikimit", length = 50)
     private String dataModifikimit;
+    @Lob
+    @Size(max = 2147483647)
+    @Column(name = "komenti", length = 2147483647)
+    private String komenti;
 
     public Dega() {
     }
@@ -229,6 +233,14 @@ public class Dega implements Serializable {
 
     public void setDataModifikimit(String dataModifikimit) {
         this.dataModifikimit = dataModifikimit;
+    }
+
+    public String getKomenti() {
+        return komenti;
+    }
+
+    public void setKomenti(String komenti) {
+        this.komenti = komenti;
     }
 
     @Override

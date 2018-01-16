@@ -100,6 +100,18 @@ body{
     box-sizing: border-box;
     
     background-color: white;
+    padding:10px;
+    
+}
+.containeri {
+   
+    border-width:1px;
+    border-color:#F47025;
+    border: 1px solid #F47025;
+    border-radius: 4px;
+    box-sizing: border-box;
+    
+    background-color: white;
     padding: 20px;
     
 }

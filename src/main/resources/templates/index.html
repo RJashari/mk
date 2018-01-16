@@ -3,11 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-<title>BpB - Ndryshimi i Shfrytëzuesëve</title>
+<title>BpB - Deget</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <!--<link th:href="@{static/styleUsers.css}" rel="stylesheet" type="text/css" href=""/>-->
-<link th:href="@{resources/static/styleUser.css}" href="../static/styleUser.css" rel="stylesheet" type="text/css"/>
+<link th:href="@{/styleUser.css}" rel="stylesheet" type="text/css"/>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 <link rel="icon" 
@@ -24,72 +24,103 @@
         <div  style="margin-top: 10px" id="titleId">
             <ul style="margin: 0">
                 
-                <li><a th:href="@{/home}">Pyetësori</a></li>      
+                <li><a th:href="@{/home}"><b>Degët</b></a></li>
                 <li style="float: right"><a th:href="@{/changePassword}">Ndrysho fjalëkalimin</a></li>
-                <li style="float: right" class="active"><a th:href="@{/users}"><b>Shfrytëzuesit</b></a></li>
-                <li style="float: right"><a th:href="@{/statistikat}">Statistikat</a></li>
+                <li style="float: right" class="active"><a th:href="@{/users}">Shfrytëzuesit</a></li>
+     
  
             </ul>
         </div>
 
 	<div id="contentDiv">
            
-            <div class="tabelaDiv">
+            <div class="tabelaDiv" style="padding-left: 3%; padding-right: 3%">
                 
                 
-                <h2 style="color:#F47025;">Tabela e shfrytëzuesve</h2>
+                <h2 style="color:#F47025;">Tabela e Degëve</h2>
           
-                <table class="table table-striped">
+                <table class="table table-striped" style="text-align: center">
                    <thead>
-                        <tr>
-                            <th>Dega</th>
-                            <th>Përgjegjësi i degës</th>
-                            <th>Çelësi i hyrjes degë (Emri Mbiemri)</th>
-                            <th>Çelësi i Server room (Emri Mbiemri)</th>
-                            <th>Kodi i kasafortës ATM (Emri Mbiemri)</th>
-                            <th>Kodi i alarmit degë (Emri Mbiemri)</th>
-                            <th>Çelësi Trezor (Emri Mbiemri)</th>
-                            <th>Çelësi kasafortë 1 (Emri Mbiemri)</th>
-                            <th>Çelësi kasafortë 2 (Emri Mbiemri)</th>
-                            <th>Kodi alarmit trezor(nëse ka)(Emri Mbiemri)</th>
-                            <th>Kodi shifër i kasafortës (Emri Mbiemri)	</th>
-                            <th>Kodet digjitale kasafortë 1 (Emri Mbiemri)</th>
-                            <th>Kodet digjitale kasafortë 2 (Emri Mbiemri)</th>
-                            <th>Veprimet</th>
-                            <th>Data e krijimit</th>
-                            <th>Data e modifikimit</th>
+                        <tr style="font-size: 15px">
+                            <th><center>Dega</center></th>
+                            <th><center>Përgjegjësi i degës</center></th>
+                            <th><center>Çelësi i hyrjes degë</center></th>
+                            <th><center>Kodi i alarmit degë</center></th>
+                            <th><center>Çelësi i Server room</center></th>
+                            <th><center>Çelësi Trezor</center></th>
+                            <th><center>Kodi alarmit trezor(nëse ka)</center></th>
+                            <th><center>Kodet digjitale kasafortë 1-5</center></th>
+                            <th><center>Kodet digjitale kasafortë 6-10</center></th>
+                            <th><center>Kodi shifër i kasafortës</center> </th>
+                            <th><center>Çelësi kasafortë 1</center></th>
+                            <th><center>Çelësi kasafortë 2</center></th>
+                            <th><center>Kodi i kasafortës ATM</center></th>
+                            <th style="width:3%"><center>Veprimet</center></th>
+                            <th><center>Data e krijimit</center></th>
+                            <th><center>Data e modifikimit</center></th>
                         </tr>
                     </thead>
                     <tbody th:if="${not #lists.isEmpty(deget)}">
-                        <tr th:each="dega, iteStat : ${deget}">
+                        
+                        <tr th:if="${user == 'admin'}" th:each="dega, iteStat : ${deget}">
                             
-                            <td id="tdT" name="emriDeges" th:text="${emriDeges}"></td>
-                            <td id="tdT" name="pergjegjesiDeges" th:text="${pergjegjesiDeges}"></td>
-                            <td id="tdT" name="celesiHyrjesDege" th:text="${celesiHyrjesDege}"></td>
-                            <td id="tdT" name="celesiServerRoom" th:text="${celesiServerRoom}"></td>
-                            <td id="tdT" name="kodiKasafortesAtm" th:text="${kodiKasafortesAtm}"></td>
-                            <td id="tdT" name="kodiAlarmitDege" th:text="${kodiAlarmitDege}"></td>
-                            <td id="tdT" name="celesiTrezor" th:text="${celesiTrezor}"></td>
-                            <td id="tdT" name="celesiKasaforte1" th:text="${celesiKasaforte1}"></td>
-                            <td id="tdT" name="celesiKasaforte2"  th:text="${celesiKasaforte2}"></td>
-                            <td id="tdT" name="kodiAlarmitTrezor"  th:text="${kodiAlarmitTrezor}"></td>
-                            <td id="tdT" name="kodiShiferKasafortes"  th:text="${kodiShiferKasafortes}"></td>
-                            <td id="tdT" name="kodetDigjitaleKasaforte1"  th:text="${kodetDigjitaleKasaforte1}"></td>
-                            <td id="tdT" name="kodetDigjitaleKasaforte2"  th:text="${kodetDigjitaleKasaforte2}"></td>
-                            <td id="tdT" name="Veprimet"  th:text="${totalPytja1}"><a id="buton"  style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary" th:href="@{/users/remove/{id}/(id=${dega.degaID})}">Fshij Degen</a>
-                                                                                   <a id="buton"  style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary" th:href="@{/users/resetPassword/{id}/(id=${dega.degaID})}">Modifiko Degen</a>
-                                                                                   <a id="buton"  style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary" th:href="@{/users/gjeneroPdf/{id}/(id=${dega.degaID})}">Gjenero Pdf</a></td>
-                            <td id="tdT" name="krijimiDeges"  th:text="${krijimiDeges}"></td>
-                            <td id="tdT" name="modifikimiDeges"  th:text="${modifikimiDeges}"></td>
+                            <td id="tdT" name="emriDeges" th:text="${dega.emri}"></td>
+                            <td id="tdT" name="pergjegjesiDeges" th:text="${dega.pergjegjesi}"></td>
+                            <td id="tdT" name="celesiHyrjesDege" th:text="${dega.celesiHyrjes}"></td>
+                            <td id="tdT" name="kodiAlarmitDege" th:text="${dega.kodiAlarmitDege}"></td>
+                            <td id="tdT" name="celesiServerRoom" th:text="${dega.celesiServerRoom}"></td>
+                            <td id="tdT" name="celesiTrezor" th:text="${dega.celesiTrezor}"></td>
+                            <td id="tdT" name="kodiAlarmitTrezor"  th:text="${dega.kodiAlarmitTrezor}"></td>
+                            <td id="tdT" name="kodetDigjitaleKasaforte1"  th:text="${dega.kodetDigjitaleKasaforte1}"></td>
+                            <td id="tdT" name="kodetDigjitaleKasaforte2"  th:text="${dega.kodetDigjitaleKasaforte2}"></td>
+                            <td id="tdT" name="kodiShiferKasafortes"  th:text="${dega.kodiShiferKasaforte}"></td>
+                            <td id="tdT" name="celesiKasaforte1" th:text="${dega.celesiKasaforte1}"></td>
+                            <td id="tdT" name="celesiKasaforte2"  th:text="${dega.celesiKasaforte2}"></td>
+                            <td id="tdT" name="celesiDeresAtm" th:text="${dega.celesiDeresAtm}"></td>
+                            <td id="tdT"><a id="buton"  style="background-color: #F47025; width:100%; border-color: #F47025; margin-bottom: 5px; margin-top: 5px;" type="button" class="btn btn-primary" th:href="@{/deget/remove/{id}/(id=${dega.degaID})}">Fshij Degen&nbsp;</a>
+                                         <a id="buton"  style="background-color: #F47025; width:100%; border-color: #F47025;  margin-bottom: 5px" type="button" class="btn btn-primary" th:href="@{/deget/modify/{id}/(id=${dega.degaID})}">Modifiko Degen</a>
+                                         <a id="buton"  style="background-color: #F47025; width:100%; border-color: #F47025;  margin-bottom: 5px" type="button" class="btn btn-primary" th:href="@{/deget/gjeneroPdf/{id}/(id=${dega.degaID})}">Gjenero Pdf&nbsp;</a></td>
+                            <td id="tdT" name="krijimiDeges"  th:text="${dega.dataKrijimit}"></td>
+                            <td id="tdT" name="modifikimiDeges"  th:text="${dega.dataModifikimit}"></td>
+
+                        </tr>
+                         <tr th:unless="${user == 'admin'}" th:each="dega, iteStat : ${deget}">
+                            
+                            <td id="tdT" name="emriDeges" th:text="${dega.emri}"></td>
+                            <td id="tdT" name="pergjegjesiDeges" th:text="${dega.pergjegjesi}"></td>
+                            <td id="tdT" name="celesiHyrjesDege" th:text="${dega.celesiHyrjes}"></td>
+                            <td id="tdT" name="kodiAlarmitDege" th:text="${dega.kodiAlarmitDege}"></td>
+                            <td id="tdT" name="celesiServerRoom" th:text="${dega.celesiServerRoom}"></td>
+                            <td id="tdT" name="celesiTrezor" th:text="${dega.celesiTrezor}"></td>
+                            <td id="tdT" name="kodiAlarmitTrezor"  th:text="${dega.kodiAlarmitTrezor}"></td>
+                            <td id="tdT" name="kodetDigjitaleKasaforte1"  th:text="${dega.kodetDigjitaleKasaforte1}"></td>
+                            <td id="tdT" name="kodetDigjitaleKasaforte2"  th:text="${dega.kodetDigjitaleKasaforte2}"></td>
+                            <td id="tdT" name="kodiShiferKasafortes"  th:text="${dega.kodiShiferKasaforte}"></td>
+                            <td id="tdT" name="celesiKasaforte1" th:text="${dega.celesiKasaforte1}"></td>
+                            <td id="tdT" name="celesiKasaforte2"  th:text="${dega.celesiKasaforte2}"></td>
+                            <td id="tdT" name="celesiDeresAtm" th:text="${dega.celesiDeresAtm}"></td>
+                            <td id="tdT"><a id="buton"  style="background-color: #F47025; width:100%; border-color: #F47025;  margin-bottom: 5px" type="button" class="btn btn-primary" th:href="@{/deget/modify/{id}/(id=${dega.degaID})}">Modifiko Degen</a>
+                                         <a id="buton"  style="background-color: #F47025; width:100%; border-color: #F47025;  margin-bottom: 5px" type="button" class="btn btn-primary" th:href="@{/deget/gjeneroPdf/{id}/(id=${dega.degaID})}">Gjenero Pdf&nbsp;</a></td>
+                            <td id="tdT" name="krijimiDeges"  th:text="${dega.dataKrijimit}"></td>
+                            <td id="tdT" name="modifikimiDeges"  th:text="${dega.dataModifikimit}"></td>
 
                         </tr>
                        
                     </tbody>
                 </table>
-                 <div class="shtoShfrytezuesin">
-                     <a id="buton"  style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary" th:href="@{/users/add}">Shto Shfrytëzuesin</a>
+                 <div th:if="${user == 'admin'}" class="shtoShfrytezuesin">
+                     <a id="buton"  style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary" th:href="@{/deget/add}">Shto Degën</a>
+                     <a id="buton"  style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary" th:href="@{/deget/gjeneroAllPdf}">Gjenero Pdf Deget</a>
+                     
+                     
                 </div>
             </div>
+            <div style="width:10%; padding-bottom: 50px;">
+                      <form th:action="@{/logout}" method="post">
+                          <input style="float: right" type="submit" value="Sign Out"/>
+                            </form>
+                    
+                    </div>
                     <div class="temp" style="padding-bottom: 300px"></div>
 			
 

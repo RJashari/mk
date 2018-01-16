@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<title>BpB - Ndryshimi i Shfrytëzuesëve</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link th:href="@{/styleUser.css}" rel="stylesheet" type="text/css"/>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<link rel="icon" 
+      type="image/png" 
+      th:href="@{bpbIcon1.png}" />
+</head>
+<body style="background-color: #eaeaea">
+
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+                
+        
+        <div  style="margin-top: 10px" id="titleId">
+            <ul style="margin: 0">
+                
+                <li><a th:href="@{/home}">Degët</a></li>      
+                <li style="float: right"><a th:href="@{/changePassword}">Ndrysho fjalëkalimin</a></li>
+                <li style="float: right" class="active"><a th:href="@{/users}"><b>Shfrytëzuesit</b></a></li>
+               
+ 
+            </ul>
+        </div>
+
+	<div id="contentDiv">
+           
+            <div class="tabelaDiv">
+                
+                
+                <h2 style="color:#F47025;">Tabela e shfrytëzuesve</h2>
+          
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Roli</th>
+                            <th>Veprimet</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:if="${not #lists.isEmpty(allUsers)} and ${user.enable}==true" th:each="user, iteStat : ${allUsers}">
+                            <td id="tdT" th:text="${user.username}"></td>
+                            <td id="tdT" th:text="${user.email}"></td>
+                            <td id="tdT" th:text="${user.role}"></td>
+                            <td>
+                              <a id="buton"  style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary" th:href="@{/users/remove/{id}/(id=${user.UserID})}">Fshij Shfrytezuesin</a>
+                              <a id="buton"  style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary" th:href="@{/users/resetPassword/{id}/(id=${user.UserID})}">Reseto Passwordin</a>
+                            </td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+                 <div class="shtoShfrytezuesin">
+                     <a id="buton"  style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary" th:href="@{/users/add}">Shto Shfrytëzuesin</a>
+                     <a id="buton"  style="background-color: #F47025; border-color: #F47025" type="button" class="btn btn-primary" th:href="@{/users/rikthe}">Rikthe Shfrytëzuesin</a>
+                </div>
+            </div>
+                    <div class="temp" style="padding-bottom: 300px"></div>
+			
+
+		<script>
+			// When the user scrolls down 20px from the top of the document, show the button
+			window.onscroll = function() {
+				scrollFunction()
+			};
+
+			function scrollFunction() {
+				if (document.body.scrollTop > 20
+						|| document.documentElement.scrollTop > 20) {
+					document.getElementById("myBtn").style.display = "block";
+				} else {
+					document.getElementById("myBtn").style.display = "none";
+				}
+			}
+
+			// When the user clicks on the button, scroll to the top of the document
+			function topFunction() {
+				document.body.scrollTop = 0;
+				document.documentElement.scrollTop = 0;
+			}
+		</script>
+
+                    
+	</div>
+            <div class="footer">
+		  <p>Powered by: BpB IT Division. 2017</p>
+		</div>
+</body>
+</html>

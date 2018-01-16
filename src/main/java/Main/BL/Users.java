@@ -9,6 +9,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -22,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author rinor.jashari
  */
 @Entity
-@Table(name = "Users", catalog = "MENAXHIMI_CELESAVE", schema = "dbo")
+@Table(name = "Users")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u")
@@ -30,14 +32,14 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username")
     , @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password")
     , @NamedQuery(name = "Users.findByRole", query = "SELECT u FROM Users u WHERE u.role = :role")
-    , @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email")})
+    , @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email")
+    , @NamedQuery(name = "Users.findByEnable", query = "SELECT u FROM Users u WHERE u.enable = :enable")})
 public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "userID", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "degaID")
     private Integer userID;
     @Basic(optional = false)
     @NotNull
@@ -58,6 +60,8 @@ public class Users implements Serializable {
     @Size(max = 50)
     @Column(name = "email", length = 50)
     private String email;
+    @Column(name = "enable")
+    private Boolean enable;
 
     public Users() {
     }
@@ -111,6 +115,14 @@ public class Users implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Boolean getEnable() {
+        return enable;
+    }
+
+    public void setEnable(Boolean enable) {
+        this.enable = enable;
     }
 
     @Override

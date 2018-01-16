@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<title>BpB - Forma për te shtuar dege</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link th:href="@{/styles.css}" rel="stylesheet" type="text/css"/>
+<link rel="icon" 
+      type="image/png" 
+      th:href="@{bpbIcon1.png}" />
+</head>
+<body style="background-color: #eaeaea">
+
+
+
+<form th:object="${dega}" method="post" th:action="@{/deget/modify}">
+  
+
+    <div th:if="${roli == 'admin'}" class="container" style="padding: 10px 20% auto 20%; margin: 10px 20% auto 20%">
+
+
+        <h2>Shto Degën</h2>
+        
+        <label><b>ID e degës</b></label>
+        <input th:field="${dega.degaID}" type="text" id="id" name="id" placeholder="Emri i deges.."  readonly="readonly"/>
+        
+        <label><b>Emri i degës</b></label>
+        <input th:field="${dega.emri}" type="text" id="emri" name="emri" placeholder="Emri i deges.."  readonly="readonly" required="required"/>
+        <label><b>Pergjegjesi</b></label>
+        <input th:field="${dega.pergjegjesi}" type="text" id="pergjegjesi" name="pergjegjesi"  placeholder="Pergjegjesi.." required="required"/>       
+        <label><b>Çelësi i hyrjes degë</b></label>
+        <input th:field="${dega.celesiHyrjes}" type="text" id="celesiHyrjes" name="celesiHyrjes"  placeholder="Çelësi i hyrjes degë.." />     
+        <label><b>Kodi i alarmit degë</b></label>
+        <input th:field="${dega.kodiAlarmitDege}" type="text" id="kodiAlarmitDege" name="kodiAlarmitDege"  placeholder="Kodi i alarmit degë.." />
+        <label><b>Çelësi i Server room</b></label>
+        <input th:field="${dega.celesiServerRoom}" type="text" id="celesiServerRoom" name="celesiServerRoom"  placeholder="Çelësi i Server room.." />
+        <label><b>Çelësi Trezor</b></label>
+        <input th:field="${dega.celesiTrezor}" type="text" id="celesiTrezor" name="celesiTrezor"  placeholder="Çelësi Trezor.." />
+        <label><b>Kodi alarmit trezor</b></label>
+        <input th:field="${dega.kodiAlarmitTrezor}" type="text" id="kodiAlarmitTrezor" name="kodiAlarmitTrezor"  placeholder="Kodi alarmit trezor.." />
+        <label><b>Kodet digjitale kasafortë 1-5</b></label>
+        <input th:field="${dega.kodetDigjitaleKasaforte1}" type="text" id="kodetDigjitaleKasaforte1" name="kodetDigjitaleKasaforte1"  placeholder="Kodet digjitale kasafortë 1-5.." />
+        <label><b>Kodet digjitale kasafortë 6-10</b></label>
+        <input th:field="${dega.kodetDigjitaleKasaforte2}" type="text" id="kodetDigjitaleKasaforte2" name="kodetDigjitaleKasaforte2"  placeholder="Kodet digjitale kasafortë 6-10.." />
+        <label><b>Kodi shifër i kasafortës</b></label>
+        <input th:field="${dega.kodiShiferKasaforte}" type="text" id="kodiShiferKasaforte" name="kodiShiferKasaforte"  placeholder="Kodi shifër i kasafortës.." />
+        <label><b>Çelësi kasafortë 1</b></label>
+        <input th:field="${dega.celesiKasaforte1}" type="text" id="celesiKasaforte1" name="celesiKasaforte1"  placeholder="Çelësi kasafortë 1.." />
+        <label><b>Çelësi kasafortë 2</b></label>
+        <input th:field="${dega.celesiKasaforte2}" type="text" id="celesiKasaforte2" name="celesiKasaforte2"  placeholder="Çelësi kasafortë 2.." />              
+        <label><b>Kodi i kasafortës ATM</b></label>
+        <input th:field="${dega.celesiDeresAtm}" type="text" id="celesiDeresAtm" name="celesiDeresAtm"  placeholder="Kodi i kasafortës ATM.." />
+        <label><b>Kërkesë shtesë</b></label>
+        <input th:field="${dega.komenti}" type="text" id="kerkesa" name="kerkesa"  placeholder="Kërkesa shtesë..." />
+        
+        <input type="submit" value="Submit"/>
+    </div>
+
+     <div th:unless="${roli == 'admin'}" class="container" style="padding: 10px 20% auto 20%; margin: 10px 20% auto 20%">
+
+
+        <h2>Shto Degën</h2>
+        
+        <label><b>ID e degës</b></label>
+        <input th:field="${dega.degaID}" type="text" id="id" name="id" placeholder="Emri i deges.."  readonly="readonly"/>
+        
+        <label><b>Emri i degës</b></label>
+        <input th:field="${dega.emri}" type="text" id="emri" name="emri" placeholder="Emri i deges.."  readonly="readonly" required="required"/>
+        <label><b>Pergjegjesi</b></label>
+        <input th:field="${dega.pergjegjesi}" type="text" id="pergjegjesi" name="pergjegjesi"  placeholder="Pergjegjesi.." readonly="readonly" required="required"/>        
+        <label><b>Çelësi i hyrjes degë</b></label>
+        <input th:field="${dega.celesiHyrjes}" type="text" id="celesiHyrjes" name="celesiHyrjes"  placeholder="Çelësi i hyrjes degë.." />     
+        <label><b>Kodi i alarmit degë</b></label>
+        <input th:field="${dega.kodiAlarmitDege}" type="text" id="kodiAlarmitDege" name="kodiAlarmitDege"  placeholder="Kodi i alarmit degë.." />
+        <label><b>Çelësi i Server room</b></label>
+        <input th:field="${dega.celesiServerRoom}" type="text" id="celesiServerRoom" name="celesiServerRoom"  placeholder="Çelësi i Server room.." />
+        <label><b>Çelësi Trezor</b></label>
+        <input th:field="${dega.celesiTrezor}" type="text" id="celesiTrezor" name="celesiTrezor"  placeholder="Çelësi Trezor.." />
+        <label><b>Kodi alarmit trezor</b></label>
+        <input th:field="${dega.kodiAlarmitTrezor}" type="text" id="kodiAlarmitTrezor" name="kodiAlarmitTrezor"  placeholder="Kodi alarmit trezor.." />
+        <label><b>Kodet digjitale kasafortë 1-5</b></label>
+        <input th:field="${dega.kodetDigjitaleKasaforte1}" type="text" id="kodetDigjitaleKasaforte1" name="kodetDigjitaleKasaforte1"  placeholder="Kodet digjitale kasafortë 1-5.." />
+        <label><b>Kodet digjitale kasafortë 6-10</b></label>
+        <input th:field="${dega.kodetDigjitaleKasaforte2}" type="text" id="kodetDigjitaleKasaforte2" name="kodetDigjitaleKasaforte2"  placeholder="Kodet digjitale kasafortë 6-10.." />
+        <label><b>Kodi shifër i kasafortës</b></label>
+        <input th:field="${dega.kodiShiferKasaforte}" type="text" id="kodiShiferKasaforte" name="kodiShiferKasaforte"  placeholder="Kodi shifër i kasafortës.." />
+        <label><b>Çelësi kasafortë 1</b></label>
+        <input th:field="${dega.celesiKasaforte1}" type="text" id="celesiKasaforte1" name="celesiKasaforte1"  placeholder="Çelësi kasafortë 1.." />
+        <label><b>Çelësi kasafortë 2</b></label>
+        <input th:field="${dega.celesiKasaforte2}" type="text" id="celesiKasaforte2" name="celesiKasaforte2"  placeholder="Çelësi kasafortë 2.." />              
+        <label><b>Kodi i kasafortës ATM</b></label>
+        <input th:field="${dega.celesiDeresAtm}" type="text" id="celesiDeresAtm" name="celesiDeresAtm"  placeholder="Kodi i kasafortës ATM.." />
+        <label><b>Kërkesë shtesë</b></label>
+        <input th:field="${dega.komenti}" type="text" id="kerkesa" name="kerkesa"  placeholder="Kërkesa shtesë..." />
+        
+        <input type="submit" value="Submit"/>
+    </div>
+
+</form>
+</body>
+</html>
+
+
